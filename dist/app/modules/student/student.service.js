@@ -8,24 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose_1 = __importDefault(require("mongoose"));
-const config_1 = __importDefault(require("./app/config"));
-const app_1 = __importDefault(require("./app"));
-function main() {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            yield mongoose_1.default.connect(config_1.default.db_url);
-            app_1.default.listen(config_1.default.port, () => {
-                console.log(`Example app listening on the port number ${config_1.default.port}`);
-            });
-        }
-        catch (err) {
-            console.log(err);
-        }
-    });
-}
-main();
+exports.studentServices = void 0;
+const student_model_1 = require("./student.model");
+// creating new student data
+const createStudentIntoDB = (student) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield student_model_1.StudentModel.create(student);
+    return result;
+});
+// retrieve all student's data from database
+const getAllStudentsFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield student_model_1.StudentModel.find();
+    return result;
+});
+exports.studentServices = {
+    createStudentIntoDB,
+    getAllStudentsFromDB
+};

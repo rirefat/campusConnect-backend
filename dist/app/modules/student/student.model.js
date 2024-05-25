@@ -1,7 +1,8 @@
-import { Schema, model } from "mongoose";
-import { TGuardian, TLocalGuardian, TStudent, TUsername } from "./student.interface";
-
-const userNameSchema = new Schema<TUsername>({
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.StudentModel = void 0;
+const mongoose_1 = require("mongoose");
+const userNameSchema = new mongoose_1.Schema({
     firstName: {
         type: String,
         required: [true, "First name is required"]
@@ -14,9 +15,8 @@ const userNameSchema = new Schema<TUsername>({
         type: String,
         required: [true, "Last name is required"]
     }
-})
-
-const guardianSchema = new Schema<TGuardian>({
+});
+const guardianSchema = new mongoose_1.Schema({
     fatherName: {
         type: String,
         required: [true, "Father's name is required"]
@@ -42,8 +42,7 @@ const guardianSchema = new Schema<TGuardian>({
         required: [true, "Mother's contact no is required"]
     },
 });
-
-const localGuardianSchema = new Schema<TLocalGuardian>({
+const localGuardianSchema = new mongoose_1.Schema({
     name: {
         type: String,
         required: [true, "Local's guardian's name is required"]
@@ -60,9 +59,8 @@ const localGuardianSchema = new Schema<TLocalGuardian>({
         type: String,
         required: [true, "Address is required"]
     }
-})
-
-const studentSchema = new Schema<TStudent>({
+});
+const studentSchema = new mongoose_1.Schema({
     id: { type: String, required: true },
     name: userNameSchema,
     gender: ['male', 'female'],
@@ -95,7 +93,5 @@ const studentSchema = new Schema<TStudent>({
     localGuardian: localGuardianSchema,
     profileImg: String,
     isActive: ['active', 'blocked']
-    
 });
-
-export const StudentModel = model<TStudent>("Student", studentSchema);
+exports.StudentModel = (0, mongoose_1.model)("Student", studentSchema);
