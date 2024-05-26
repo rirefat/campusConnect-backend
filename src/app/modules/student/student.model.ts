@@ -4,14 +4,20 @@ import { TGuardian, TLocalGuardian, TStudent, TUsername } from "./student.interf
 const userNameSchema = new Schema<TUsername>({
     firstName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [12, "Invalid name"],
         required: [true, "First name is required"]
     },
     middleName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [12, "Invalid name"],
         required: [true, "Middle name is required"]
     },
     lastName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [12, "Invalid name"],
         required: [true, "Last name is required"]
     }
 })
@@ -63,9 +69,13 @@ const localGuardianSchema = new Schema<TLocalGuardian>({
 })
 
 const studentSchema = new Schema<TStudent>({
-    id: { type: String, required: true },
+    id: { type: String, required: true, unique: true },
     name: userNameSchema,
-    gender: ['male', 'female'],
+    gender: {
+        type: String,
+        enum: ['male', 'female'],
+        required: true
+    },
     dateOfBirth: {
         type: String,
         required: [true, "Date of birth is required"]
@@ -82,7 +92,10 @@ const studentSchema = new Schema<TStudent>({
         type: String,
         required: [true, "Emergency contact no is required"]
     },
-    bloodGroup: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'],
+    bloodGroup: {
+        type: String,
+        enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
+    },
     presentAddress: {
         type: String,
         required: [true, "Present address is required"]
@@ -94,8 +107,12 @@ const studentSchema = new Schema<TStudent>({
     guardian: guardianSchema,
     localGuardian: localGuardianSchema,
     profileImg: String,
-    isActive: ['active', 'blocked']
-    
+    isActive: {
+        type: String,
+        enum: ['active', 'blocked'],
+        required: true
+    }
+
 });
 
 export const StudentModel = model<TStudent>("Student", studentSchema);
