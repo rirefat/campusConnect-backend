@@ -43,7 +43,24 @@ const getAllStudents = (req, res) => __awaiter(void 0, void 0, void 0, function*
         console.log(err);
     }
 });
+// getting single student's data from db
+const getSingleStudent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const { studentId } = req.params;
+        const result = yield student_service_1.studentServices.getSingleStudentFromDB(studentId);
+        // sending response
+        res.status(200).json({
+            success: true,
+            message: `successfully retrieved the student(id: ${studentId}) data.`,
+            data: result
+        });
+    }
+    catch (err) {
+        console.log(err);
+    }
+});
 exports.studentControllers = {
     createStudent,
-    getAllStudents
+    getAllStudents,
+    getSingleStudent
 };

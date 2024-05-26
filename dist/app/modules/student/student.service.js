@@ -21,7 +21,13 @@ const getAllStudentsFromDB = () => __awaiter(void 0, void 0, void 0, function* (
     const result = yield student_model_1.StudentModel.find();
     return result;
 });
+// retrieve a single student's data from database
+const getSingleStudentFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield student_model_1.StudentModel.findOne({ id: id });
+    return result;
+});
 exports.studentServices = {
     createStudentIntoDB,
-    getAllStudentsFromDB
+    getAllStudentsFromDB,
+    getSingleStudentFromDB
 };
