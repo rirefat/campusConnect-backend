@@ -57,6 +57,8 @@
 - Admin can change user passwords.
 
 # Data Model
+- [ER Diagram of Data Model](https://lucid.app/lucidchart/2825f4be-a06c-49ce-8956-75e3555fb6b8/edit?viewport_loc=269%2C104%2C1347%2C572%2C0_0&invitationId=inv_129b961f-5586-42d4-b236-4abe6bde0bde)
+
 
 ## User
 
