@@ -5,24 +5,34 @@ const mongoose_1 = require("mongoose");
 const userNameSchema = new mongoose_1.Schema({
     firstName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [12, "Invalid name"],
         required: [true, "First name is required"]
     },
     middleName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [12, "Invalid name"],
         required: [true, "Middle name is required"]
     },
     lastName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [12, "Invalid name"],
         required: [true, "Last name is required"]
     }
 });
 const guardianSchema = new mongoose_1.Schema({
     fatherName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [40, "Invalid name"],
         required: [true, "Father's name is required"]
     },
     fatherOccupation: {
         type: String,
+        min: [1, "Invalid occupation"],
+        max: [25, "Invalid occupation"],
         required: [true, "Father's occupation is required"]
     },
     fatherContactNo: {
@@ -31,10 +41,14 @@ const guardianSchema = new mongoose_1.Schema({
     },
     motherName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [40, "Invalid name"],
         required: [true, "Mother's name is required"]
     },
     motherOccupation: {
         type: String,
+        min: [1, "Invalid occupation"],
+        max: [25, "Invalid occupation"],
         required: [true, "Mother's occupation is required"]
     },
     motherContactNo: {
@@ -45,10 +59,14 @@ const guardianSchema = new mongoose_1.Schema({
 const localGuardianSchema = new mongoose_1.Schema({
     name: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [40, "Invalid name"],
         required: [true, "Local's guardian's name is required"]
     },
     occupation: {
         type: String,
+        min: [1, "Invalid occupation"],
+        max: [25, "Invalid occupation"],
         required: [true, "Local's guardian's occupation is required"]
     },
     contactNo: {
@@ -61,7 +79,7 @@ const localGuardianSchema = new mongoose_1.Schema({
     }
 });
 const studentSchema = new mongoose_1.Schema({
-    id: { type: String, required: true },
+    id: { type: String, required: true, unique: true },
     name: userNameSchema,
     gender: {
         type: String,

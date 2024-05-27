@@ -11,11 +11,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.studentControllers = void 0;
 const student_service_1 = require("./student.service");
+const student_validation_1 = require("./student.validation");
 // creating a new student data
 const createStudent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { student: studentData } = req.body;
-        const result = yield student_service_1.studentServices.createStudentIntoDB(studentData);
+        // validation using zod
+        const zodParsedData = student_validation_1.studentValidationSchema.parse(studentData);
+        const result = yield student_service_1.studentServices.createStudentIntoDB(zodParsedData);
         // response
         res.status(200).json({
             success: true,

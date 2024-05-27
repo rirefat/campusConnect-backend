@@ -25,10 +25,14 @@ const userNameSchema = new Schema<TUsername>({
 const guardianSchema = new Schema<TGuardian>({
     fatherName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [40, "Invalid name"],
         required: [true, "Father's name is required"]
     },
     fatherOccupation: {
         type: String,
+        min: [1, "Invalid occupation"],
+        max: [25, "Invalid occupation"],
         required: [true, "Father's occupation is required"]
     },
     fatherContactNo: {
@@ -37,10 +41,14 @@ const guardianSchema = new Schema<TGuardian>({
     },
     motherName: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [40, "Invalid name"],
         required: [true, "Mother's name is required"]
     },
     motherOccupation: {
         type: String,
+        min: [1, "Invalid occupation"],
+        max: [25, "Invalid occupation"],
         required: [true, "Mother's occupation is required"]
     },
     motherContactNo: {
@@ -52,10 +60,14 @@ const guardianSchema = new Schema<TGuardian>({
 const localGuardianSchema = new Schema<TLocalGuardian>({
     name: {
         type: String,
+        min: [1, "Invalid name"],
+        max: [40, "Invalid name"],
         required: [true, "Local's guardian's name is required"]
     },
     occupation: {
         type: String,
+        min: [1, "Invalid occupation"],
+        max: [25, "Invalid occupation"],
         required: [true, "Local's guardian's occupation is required"]
     },
     contactNo: {
