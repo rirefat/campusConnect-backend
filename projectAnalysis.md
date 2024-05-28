@@ -88,6 +88,7 @@
 - localGuardian
 - profileImage
 - admissionSemester
+- academicDepartment
 - isDeleted
 - createdAt
 - updatedAt
