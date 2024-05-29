@@ -15,10 +15,10 @@ const userSchema = new Schema<TUser>({
         enum: (['in-progress', 'blocked']),
         required: true
     },
-    isDeleted: { type: Boolean, required: true },
+    isDeleted: Boolean
 },
-{
-    timestamps: true
-});
+    {
+        timestamps: true
+    });
 
 export const UserModel = model<TUser>("User", userSchema);

@@ -16,7 +16,7 @@ const userSchema = new mongoose_1.Schema({
         enum: (['in-progress', 'blocked']),
         required: true
     },
-    isDeleted: { type: Boolean, required: true },
+    isDeleted: Boolean
 }, {
     timestamps: true
 });
