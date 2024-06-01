@@ -1,12 +1,14 @@
 import { NextFunction, Request, Response } from "express";
 import { studentServices } from "./student.service";
+import sendResponse from "../../utils/sendResponse";
+import httpStatus from "http-status";
 // import { studentValidationSchema } from "./student.validation";
 
 // creating a new student data
 // const createStudent = async (req: Request, res: Response) => {
 //     try {
 //         const { student: studentData } = req.body;
-        
+
 //         // validation using zod
 //         const zodParsedData = studentValidationSchema.parse(studentData);
 //         const result = await studentServices.createStudentIntoDB(zodParsedData);
@@ -28,10 +30,16 @@ const getAllStudents = async (req: Request, res: Response, next: NextFunction) =
         const result = await studentServices.getAllStudentsFromDB();
 
         // sending response
-        res.status(200).json({
+        // res.status(200).json({
+        //     success: true,
+        //     message: "Successfully retrieved all the student's data from database.",
+        //     totalData: result.length,
+        //     data: result
+        // })
+        sendResponse(res, {
             success: true,
+            statusCode: httpStatus.OK,
             message: "Successfully retrieved all the student's data from database.",
-            totalData: result.length,
             data: result
         })
     } catch (err) {
@@ -46,8 +54,14 @@ const getSingleStudent = async (req: Request, res: Response, next: NextFunction)
         const result = await studentServices.getSingleStudentFromDB(studentId);
 
         // sending response
-        res.status(200).json({
+        // res.status(200).json({
+        //     success: true,
+        //     message: `successfully retrieved the student(id: ${studentId}) data.`,
+        //     data: result
+        // })
+        sendResponse(res, {
             success: true,
+            statusCode: httpStatus.OK,
             message: `successfully retrieved the student(id: ${studentId}) data.`,
             data: result
         })
