@@ -30,7 +30,7 @@ const student_service_1 = require("./student.service");
 //     }
 // }
 // getting all student's data from db
-const getAllStudents = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllStudents = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield student_service_1.studentServices.getAllStudentsFromDB();
         // sending response
@@ -42,11 +42,11 @@ const getAllStudents = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
     catch (err) {
-        console.log(err);
+        next(err);
     }
 });
 // getting single student's data from db
-const getSingleStudent = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getSingleStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { studentId } = req.params;
         const result = yield student_service_1.studentServices.getSingleStudentFromDB(studentId);
@@ -58,7 +58,7 @@ const getSingleStudent = (req, res) => __awaiter(void 0, void 0, void 0, functio
         });
     }
     catch (err) {
-        console.log(err);
+        next(err);
     }
 });
 exports.studentControllers = {
