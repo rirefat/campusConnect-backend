@@ -1,26 +1,26 @@
 import { Request, Response } from "express";
 import { studentServices } from "./student.service";
-import { studentValidationSchema } from "./student.validation";
+// import { studentValidationSchema } from "./student.validation";
 
 // creating a new student data
-const createStudent = async (req: Request, res: Response) => {
-    try {
-        const { student: studentData } = req.body;
+// const createStudent = async (req: Request, res: Response) => {
+//     try {
+//         const { student: studentData } = req.body;
         
-        // validation using zod
-        const zodParsedData = studentValidationSchema.parse(studentData);
-        const result = await studentServices.createStudentIntoDB(zodParsedData);
+//         // validation using zod
+//         const zodParsedData = studentValidationSchema.parse(studentData);
+//         const result = await studentServices.createStudentIntoDB(zodParsedData);
 
-        // response
-        res.status(200).json({
-            success: true,
-            message: "Successfully created student data.",
-            data: result
-        })
-    } catch (err) {
-        console.log(err)
-    }
-}
+//         // response
+//         res.status(200).json({
+//             success: true,
+//             message: "Successfully created student data.",
+//             data: result
+//         })
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
 // getting all student's data from db
 const getAllStudents = async (req: Request, res: Response) => {
@@ -57,7 +57,7 @@ const getSingleStudent = async (req: Request, res: Response) => {
 }
 
 export const studentControllers = {
-    createStudent,
+    // createStudent,
     getAllStudents,
     getSingleStudent
 }

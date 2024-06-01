@@ -6,3 +6,9 @@ export interface TUser {
     status: 'in-progress' | 'blocked';
     isDeleted: boolean
 };
+
+export type NewUser = {
+    id: string;
+    password: string;
+    role: string;
+}
