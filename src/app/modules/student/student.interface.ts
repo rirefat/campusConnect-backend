@@ -1,3 +1,5 @@
+import { Types } from "mongoose";
+
 export interface TUsername {
     firstName: string;
     middleName: string;
@@ -22,6 +24,8 @@ export interface TLocalGuardian {
 
 export interface TStudent {
     id: string;
+    user: Types.ObjectId;
+    password: string;
     name: TUsername;
     gender: 'male' | 'female';
     dateOfBirth: string;
@@ -33,6 +37,5 @@ export interface TStudent {
     permanentAddress: string;
     guardian: TGuardian;
     localGuardian: TLocalGuardian;
-    profileImg?: string;
-    isActive: 'active' | 'blocked'
+    profileImg?: string; 
 }

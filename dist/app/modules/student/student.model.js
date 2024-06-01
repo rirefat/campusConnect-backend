@@ -79,7 +79,17 @@ const localGuardianSchema = new mongoose_1.Schema({
     }
 });
 const studentSchema = new mongoose_1.Schema({
-    id: { type: String, required: true, unique: true },
+    id: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    user: {
+        type: mongoose_1.Schema.Types.ObjectId,
+        required: [true, 'User id is required'],
+        unique: true,
+        ref: 'User',
+    },
     name: userNameSchema,
     gender: {
         type: String,
@@ -117,10 +127,5 @@ const studentSchema = new mongoose_1.Schema({
     guardian: guardianSchema,
     localGuardian: localGuardianSchema,
     profileImg: String,
-    isActive: {
-        type: String,
-        enum: ['active', 'blocked'],
-        required: true
-    }
 });
 exports.StudentModel = (0, mongoose_1.model)("Student", studentSchema);
