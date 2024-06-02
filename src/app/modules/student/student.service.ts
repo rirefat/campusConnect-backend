@@ -1,11 +1,4 @@
-import { TStudent } from "./student.interface";
 import { StudentModel } from "./student.model";
-
-// creating new student data
-// const createStudentIntoDB = async (student: TStudent) => {
-//     const result = await StudentModel.create(student);
-//     return result;
-// }
 
 // retrieve all student's data from database
 const getAllStudentsFromDB = async () => {
@@ -20,7 +13,6 @@ const getSingleStudentFromDB = async (id: string) => {
 }
 
 export const studentServices = {
-    // createStudentIntoDB,
     getAllStudentsFromDB,
     getSingleStudentFromDB
 }

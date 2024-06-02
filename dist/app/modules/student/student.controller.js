@@ -16,24 +16,6 @@ exports.studentControllers = void 0;
 const student_service_1 = require("./student.service");
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const http_status_1 = __importDefault(require("http-status"));
-// import { studentValidationSchema } from "./student.validation";
-// creating a new student data
-// const createStudent = async (req: Request, res: Response) => {
-//     try {
-//         const { student: studentData } = req.body;
-//         // validation using zod
-//         const zodParsedData = studentValidationSchema.parse(studentData);
-//         const result = await studentServices.createStudentIntoDB(zodParsedData);
-//         // response
-//         res.status(200).json({
-//             success: true,
-//             message: "Successfully created student data.",
-//             data: result
-//         })
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
 // getting all student's data from db
 const getAllStudents = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -79,7 +61,6 @@ const getSingleStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, f
     }
 });
 exports.studentControllers = {
-    // createStudent,
     getAllStudents,
     getSingleStudent
 };

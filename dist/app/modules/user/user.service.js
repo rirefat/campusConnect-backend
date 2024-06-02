@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userServices = void 0;
 const config_1 = __importDefault(require("../../config"));
 const student_model_1 = require("../student/student.model");
-// import { NewUser } from "./user.interface";
 const user_model_1 = require("./user.model");
 const createStudentIntoDB = (password, studentData) => __awaiter(void 0, void 0, void 0, function* () {
     // create user object

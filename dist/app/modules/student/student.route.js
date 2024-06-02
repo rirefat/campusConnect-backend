@@ -10,5 +10,4 @@ const route = express_1.default.Router();
 // Routers
 route.get('/', student_controller_1.studentControllers.getAllStudents);
 route.get('/:studentId', student_controller_1.studentControllers.getSingleStudent);
-// route.post('/create-student', studentControllers.createStudent);
 exports.studentRoutes = route;
