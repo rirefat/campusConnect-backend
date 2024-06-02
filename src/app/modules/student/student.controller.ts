@@ -1,12 +1,20 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, RequestHandler, Response } from "express";
 import { studentServices } from "./student.service";
 import sendResponse from "../../utils/sendResponse";
 import httpStatus from "http-status";
 
+// Higher order function to avoid try-catch: Implementing DRY principle
+const catchAsync = (fn: RequestHandler) => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        Promise.resolve(fn(req, res, next)).catch((err) => next(err))
+    }
+}
 
 // getting all student's data from db
-const getAllStudents = async (req: Request, res: Response, next: NextFunction) => {
-    try {
+// const getAllStudents = async (req: Request, res: Response, next: NextFunction) => {
+// The above line can be written as below: 
+const getAllStudents: RequestHandler = catchAsync(
+    async (req, res, next) => {
         const result = await studentServices.getAllStudentsFromDB();
 
         // sending response
@@ -22,14 +30,15 @@ const getAllStudents = async (req: Request, res: Response, next: NextFunction) =
             message: "Successfully retrieved all the student's data from database.",
             data: result
         })
-    } catch (err) {
-        next(err);
     }
-}
+)
+
 
 // getting single student's data from db
-const getSingleStudent = async (req: Request, res: Response, next: NextFunction) => {
-    try {
+// const getSingleStudent = async (req: Request, res: Response, next: NextFunction) => {
+// the above line can be written as below:
+const getSingleStudent: RequestHandler = catchAsync(
+    async (req, res, next) => {
         const { studentId } = req.params;
         const result = await studentServices.getSingleStudentFromDB(studentId);
 
@@ -45,10 +54,8 @@ const getSingleStudent = async (req: Request, res: Response, next: NextFunction)
             message: `successfully retrieved the student(id: ${studentId}) data.`,
             data: result
         })
-    } catch (err) {
-        next(err);
     }
-}
+)
 
 export const studentControllers = {
     getAllStudents,

@@ -16,6 +16,8 @@ exports.userControllers = void 0;
 const user_service_1 = require("./user.service");
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const http_status_1 = __importDefault(require("http-status"));
+// const createStudent = async (req: Request, res: Response, next: NextFunction) => {
+// the above line can be written as below: 
 const createStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { password, student: studentData } = req.body;

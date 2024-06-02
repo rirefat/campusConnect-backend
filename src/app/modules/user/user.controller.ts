@@ -1,9 +1,11 @@
-import { NextFunction, Request, Response } from "express";
+import { RequestHandler } from "express";
 import { userServices } from "./user.service";
 import sendResponse from "../../utils/sendResponse";
 import httpStatus from "http-status";
 
-const createStudent = async (req: Request, res: Response, next: NextFunction) => {
+// const createStudent = async (req: Request, res: Response, next: NextFunction) => {
+// the above line can be written as below: 
+const createStudent: RequestHandler = async (req, res, next) => {
     try {
         const { password, student: studentData } = req.body;
 
