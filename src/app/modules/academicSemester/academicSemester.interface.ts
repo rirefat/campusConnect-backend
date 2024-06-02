@@ -14,7 +14,7 @@ export type TMonths =
     | 'November'
     | 'December';
 
-export interface TAcademicSemester {
+export type TAcademicSemester = {
     name: TAcademicSemesterName;
     code: TAcademicSemesterCode;
     year: Date;
