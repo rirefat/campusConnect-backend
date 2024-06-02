@@ -16,15 +16,11 @@ exports.studentControllers = void 0;
 const student_service_1 = require("./student.service");
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const http_status_1 = __importDefault(require("http-status"));
-const catchAsync = (fn) => {
-    return (req, res, next) => {
-        Promise.resolve(fn(req, res, next)).catch((err) => next(err));
-    };
-};
+const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 // getting all student's data from db
 // const getAllStudents = async (req: Request, res: Response, next: NextFunction) => {
 // The above line can be written as below: 
-const getAllStudents = catchAsync((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getAllStudents = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield student_service_1.studentServices.getAllStudentsFromDB();
     // sending response
     // res.status(200).json({
@@ -43,7 +39,7 @@ const getAllStudents = catchAsync((req, res, next) => __awaiter(void 0, void 0, 
 // getting single student's data from db
 // const getSingleStudent = async (req: Request, res: Response, next: NextFunction) => {
 // the above line can be written as below:
-const getSingleStudent = catchAsync((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getSingleStudent = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { studentId } = req.params;
     const result = yield student_service_1.studentServices.getSingleStudentFromDB(studentId);
     // sending response

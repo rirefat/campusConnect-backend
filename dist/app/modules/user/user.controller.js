@@ -16,32 +16,28 @@ exports.userControllers = void 0;
 const user_service_1 = require("./user.service");
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const http_status_1 = __importDefault(require("http-status"));
+const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 // const createStudent = async (req: Request, res: Response, next: NextFunction) => {
 // the above line can be written as below: 
-const createStudent = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { password, student: studentData } = req.body;
-        // validation using zod
-        // const zodParsedData = studentValidationSchema.parse(studentData);
-        // const result = await userServices.createStudentIntoDB(zodParsedData);
-        const result = yield user_service_1.userServices.createStudentIntoDB(password, studentData);
-        // sending response
-        // res.status(200).json({
-        //     success: true, 
-        //     message: "Successfully created student data.",
-        //     data: result
-        // })
-        (0, sendResponse_1.default)(res, {
-            success: true,
-            statusCode: http_status_1.default.OK,
-            message: "Successfully created student data.",
-            data: result
-        });
-    }
-    catch (err) {
-        next(err);
-    }
-});
+const createStudent = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { password, student: studentData } = req.body;
+    // validation using zod
+    // const zodParsedData = studentValidationSchema.parse(studentData);
+    // const result = await userServices.createStudentIntoDB(zodParsedData);
+    const result = yield user_service_1.userServices.createStudentIntoDB(password, studentData);
+    // sending response
+    // res.status(200).json({
+    //     success: true, 
+    //     message: "Successfully created student data.",
+    //     data: result
+    // })
+    (0, sendResponse_1.default)(res, {
+        success: true,
+        statusCode: http_status_1.default.OK,
+        message: "Successfully created student data.",
+        data: result
+    });
+}));
 exports.userControllers = {
     createStudent,
 };
