@@ -42,7 +42,7 @@ const localGuardianValidationSchema = z.object({
     address: z.string({ required_error: "Address no is required" }),
 });
 
-const studentValidationSchema = z.object({
+const createStudentValidationSchema = z.object({
     body: z.object({
         password: z.string().min(8),
         student: z.object({
@@ -59,11 +59,10 @@ const studentValidationSchema = z.object({
             localGuardian: localGuardianValidationSchema,
             profileImg: z.string({ required_error: "Student img is required" }),
         })
-        // isActive: z.enum(['active', 'blocked']).default("active")
     })
 });
 
 
 export const studentValidations = {
-    studentValidationSchema,
+    createStudentValidationSchema,
 }

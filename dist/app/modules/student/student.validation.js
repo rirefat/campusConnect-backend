@@ -39,7 +39,7 @@ const localGuardianValidationSchema = zod_1.z.object({
     contactNo: zod_1.z.string({ required_error: "contact no is required" }),
     address: zod_1.z.string({ required_error: "Address no is required" }),
 });
-const studentValidationSchema = zod_1.z.object({
+const createStudentValidationSchema = zod_1.z.object({
     body: zod_1.z.object({
         password: zod_1.z.string().min(8),
         student: zod_1.z.object({
@@ -56,9 +56,8 @@ const studentValidationSchema = zod_1.z.object({
             localGuardian: localGuardianValidationSchema,
             profileImg: zod_1.z.string({ required_error: "Student img is required" }),
         })
-        // isActive: z.enum(['active', 'blocked']).default("active")
     })
 });
 exports.studentValidations = {
-    studentValidationSchema,
+    createStudentValidationSchema,
 };
