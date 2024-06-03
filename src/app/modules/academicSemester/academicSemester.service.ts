@@ -23,8 +23,15 @@ const getSingleAcademicSemesterFromDB = async (id: string) => {
     return result;
 }
 
+// Updating single academic semester
+const updateSingleAcademicSemesterIntoDB = async (id: string, payload: TAcademicSemester) => {
+    const result = await AcademicSemesterModel.findOneAndUpdate({ _id: id }, payload, { new: true })
+    return result;
+}
+
 export const academicSemesterServices = {
     createAcademicSemesterIntoDB,
     getAllAcademicSemestersFromDB,
     getSingleAcademicSemesterFromDB,
+    updateSingleAcademicSemesterIntoDB,
 }

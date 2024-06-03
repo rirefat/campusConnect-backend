@@ -3,6 +3,7 @@ import catchAsync from "../../utils/catchAsync"
 import sendResponse from "../../utils/sendResponse";
 import { RequestHandler } from "express";
 import { academicSemesterServices } from "./academicSemester.service";
+import { TAcademicSemester } from "./academicSemester.interface";
 
 // Creating a new academic semester
 const createAcademicSemester: RequestHandler = catchAsync(async (req, res) => {
@@ -43,10 +44,25 @@ const getSingleAcademicSemester: RequestHandler = catchAsync(async (req, res) =>
         message: 'Retrieved single academic semester successfully',
         data: result
     })
+});
+
+// Updating a single academic semester
+const updateSingleAcademicSemester: RequestHandler = catchAsync(async (req, res) => {
+    const { semesterId } = req.params;
+    const result = await academicSemesterServices.updateSingleAcademicSemesterIntoDB(semesterId, req.body);
+
+    // sending response
+    sendResponse(res, {
+        statusCode: httpStatus.OK,
+        success: true,
+        message: 'Updating single academic semester successfully',
+        data: result
+    })
 })
 
 export const AcademicSemesterControllers = {
     createAcademicSemester,
     getAllAcademicSemesters,
-    getSingleAcademicSemester
+    getSingleAcademicSemester,
+    updateSingleAcademicSemester
 }

@@ -52,8 +52,21 @@ const getSingleAcademicSemester = (0, catchAsync_1.default)((req, res) => __awai
         data: result
     });
 }));
+// Updating a single academic semester
+const updateSingleAcademicSemester = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { semesterId } = req.params;
+    const result = yield academicSemester_service_1.academicSemesterServices.updateSingleAcademicSemesterIntoDB(semesterId, req.body);
+    // sending response
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Updating single academic semester successfully',
+        data: result
+    });
+}));
 exports.AcademicSemesterControllers = {
     createAcademicSemester,
     getAllAcademicSemesters,
-    getSingleAcademicSemester
+    getSingleAcademicSemester,
+    updateSingleAcademicSemester
 };

@@ -30,8 +30,14 @@ const getSingleAcademicSemesterFromDB = (id) => __awaiter(void 0, void 0, void 0
     const result = yield academicSemester_model_1.AcademicSemesterModel.findOne({ _id: id });
     return result;
 });
+// Updating single academic semester
+const updateSingleAcademicSemesterIntoDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield academicSemester_model_1.AcademicSemesterModel.findOneAndUpdate({ _id: id }, payload, { new: true });
+    return result;
+});
 exports.academicSemesterServices = {
     createAcademicSemesterIntoDB,
     getAllAcademicSemestersFromDB,
     getSingleAcademicSemesterFromDB,
+    updateSingleAcademicSemesterIntoDB,
 };
