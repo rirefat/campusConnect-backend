@@ -25,7 +25,13 @@ const getAllAcademicSemestersFromDB = () => __awaiter(void 0, void 0, void 0, fu
     const result = academicSemester_model_1.AcademicSemesterModel.find();
     return result;
 });
+// Getting single academic semester from db
+const getSingleAcademicSemesterFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield academicSemester_model_1.AcademicSemesterModel.findOne({ _id: id });
+    return result;
+});
 exports.academicSemesterServices = {
     createAcademicSemesterIntoDB,
     getAllAcademicSemestersFromDB,
+    getSingleAcademicSemesterFromDB,
 };
