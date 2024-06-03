@@ -15,7 +15,7 @@ const academicSemesterSchema = new mongoose_1.Schema({
         enum: academicSemester_constants_1.academicSemesterCode
     },
     year: {
-        type: Date,
+        type: String,
         required: true
     },
     startMonth: {
