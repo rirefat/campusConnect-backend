@@ -32,6 +32,9 @@ const getSingleAcademicSemesterFromDB = (id) => __awaiter(void 0, void 0, void 0
 });
 // Updating single academic semester
 const updateSingleAcademicSemesterIntoDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    if (payload.name && payload.code && academicSemester_constants_1.academicSemesterCodeNameMapper[payload.name] !== payload.code) {
+        throw new Error("Invalid semester code!!");
+    }
     const result = yield academicSemester_model_1.AcademicSemesterModel.findOneAndUpdate({ _id: id }, payload, { new: true });
     return result;
 });
