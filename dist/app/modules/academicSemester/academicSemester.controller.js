@@ -18,7 +18,7 @@ const catchAsync_1 = __importDefault(require("../../utils/catchAsync"));
 const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const academicSemester_service_1 = require("./academicSemester.service");
 const createAcademicSemester = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = academicSemester_service_1.academicServices.createAcademicSemesterIntoDB(req.body);
+    const result = yield academicSemester_service_1.academicServices.createAcademicSemesterIntoDB(req.body);
     // sending response
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,

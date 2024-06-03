@@ -45,7 +45,7 @@ const createStudentValidationSchema = zod_1.z.object({
         student: zod_1.z.object({
             name: userNameValidationSchema,
             gender: zod_1.z.enum(['male', 'female']),
-            dateOfBirth: zod_1.z.date({ required_error: "Date of birth is required", }),
+            dateOfBirth: zod_1.z.string({ required_error: "Date of birth is required", }),
             email: zod_1.z.string({ required_error: "Email is required", }),
             contactNo: zod_1.z.string({ required_error: "Contact no is required", }),
             emergencyContactNo: zod_1.z.string({ required_error: "Emergency contact no is required", }),
