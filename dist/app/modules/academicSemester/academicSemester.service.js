@@ -9,9 +9,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.academicServices = void 0;
+exports.academicSemesterServices = void 0;
 const academicSemester_constants_1 = require("./academicSemester.constants");
 const academicSemester_model_1 = require("./academicSemester.model");
+// Creating a new academic semester into db
 const createAcademicSemesterIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     if (academicSemester_constants_1.academicSemesterCodeNameMapper[payload.name] !== payload.code) {
         throw new Error('Invalid semester code !!');
@@ -19,6 +20,12 @@ const createAcademicSemesterIntoDB = (payload) => __awaiter(void 0, void 0, void
     const result = academicSemester_model_1.AcademicSemesterModel.create(payload);
     return result;
 });
-exports.academicServices = {
+// Getting all academic semesters from db
+const getAllAcademicSemestersFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
+    const result = academicSemester_model_1.AcademicSemesterModel.find();
+    return result;
+});
+exports.academicSemesterServices = {
     createAcademicSemesterIntoDB,
+    getAllAcademicSemestersFromDB,
 };
