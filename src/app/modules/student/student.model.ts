@@ -129,6 +129,11 @@ const studentSchema = new Schema<TStudent>({
     guardian: guardianSchema,
     localGuardian: localGuardianSchema,
     profileImg: String,
+    admissionSemester: {
+        type: Schema.Types.ObjectId,
+        ref: 'AcademicSemester',
+        required: true
+    }
 
 });
 
