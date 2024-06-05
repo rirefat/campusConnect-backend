@@ -19,7 +19,7 @@ const createStudentIntoDB = async (password: string, studentData: TStudent) => {
     }
 
     // set user id manually
-    userData.id = generateStudentId(admissionSemester);
+    userData.id = await generateStudentId(admissionSemester);
 
     // if password is not given, use default password
     userData.password = password || (config.user_pass as string);

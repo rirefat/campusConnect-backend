@@ -28,7 +28,7 @@ const createStudentIntoDB = (password, studentData) => __awaiter(void 0, void 0,
         throw new Error('Admission semester not found');
     }
     // set user id manually
-    userData.id = (0, user_utils_1.generateStudentId)(admissionSemester);
+    userData.id = yield (0, user_utils_1.generateStudentId)(admissionSemester);
     // if password is not given, use default password
     userData.password = password || config_1.default.user_pass;
     // set student role
