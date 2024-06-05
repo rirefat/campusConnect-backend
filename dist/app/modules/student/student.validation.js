@@ -55,6 +55,7 @@ const createStudentValidationSchema = zod_1.z.object({
             guardian: guardianValidationSchema,
             localGuardian: localGuardianValidationSchema,
             profileImg: zod_1.z.string({ required_error: "Student img is required" }),
+            admissionSemester: zod_1.z.string({ required_error: "Admission semester is required" }),
         })
     })
 });

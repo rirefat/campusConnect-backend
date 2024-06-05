@@ -11,6 +11,8 @@ const academicSemester_validation_1 = require("./academicSemester.validation");
 const router = express_1.default.Router();
 router.get('/', academicSemester_controller_1.AcademicSemesterControllers.getAllAcademicSemesters);
 router.get('/:semesterId', academicSemester_controller_1.AcademicSemesterControllers.getSingleAcademicSemester);
-router.patch('/:semesterId', academicSemester_controller_1.AcademicSemesterControllers.updateSingleAcademicSemester);
+// Updating academic semester
+router.patch('/:semesterId', (0, validateRequest_1.default)(academicSemester_validation_1.AcademicSemesterValidation.updateAcademicSemesterValidationSchema), academicSemester_controller_1.AcademicSemesterControllers.updateSingleAcademicSemester);
+// Creating academic semester
 router.post('/create-academic-semester', (0, validateRequest_1.default)(academicSemester_validation_1.AcademicSemesterValidation.createAcademicSemesterValidationSchema), academicSemester_controller_1.AcademicSemesterControllers.createAcademicSemester);
 exports.academicSemesterRoutes = router;

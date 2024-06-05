@@ -20,6 +20,8 @@ const createStudentIntoDB = (password, studentData) => __awaiter(void 0, void 0,
     // create user object
     // const user = {} as NewUser;
     const userData = {};
+    // generate student id
+    const generateStudentId = (payload) => [];
     // set user id manually
     userData.id = '202510001';
     // if password is not given, use default password
