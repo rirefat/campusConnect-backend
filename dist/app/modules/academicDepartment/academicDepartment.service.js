@@ -18,12 +18,13 @@ const createAcademicDepartmentIntoDB = (payload) => __awaiter(void 0, void 0, vo
 });
 // Retrieving all academic department from DB
 const getAllAcademicDepartmentsFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield academicDepartment_model_1.AcademicDepartmentModel.find();
+    const result = yield academicDepartment_model_1.AcademicDepartmentModel.find().populate('academicFaculty');
     return result;
 });
 // Retrieving single academic department from DB
 const getSingleAcademicDepartmentFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield academicDepartment_model_1.AcademicDepartmentModel.findById(id);
+    const result = yield academicDepartment_model_1.AcademicDepartmentModel.findById(id).populate('academicFaculty');
+    ;
     return result;
 });
 // Updating single academic department from DB
