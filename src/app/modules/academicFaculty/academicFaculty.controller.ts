@@ -5,7 +5,7 @@ import httpStatus from "http-status";
 import { academicFacultyServices } from "./academicFaculty.service";
 
 // create academic faculty
-const createAcademicFaculty: RequestHandler = catchAsync(async (req, res, next) => {
+const createAcademicFaculty: RequestHandler = catchAsync(async (req, res) => {
     const result = await academicFacultyServices.createAcademicFacultyIntoDB(req.body);
 
     // sending response 

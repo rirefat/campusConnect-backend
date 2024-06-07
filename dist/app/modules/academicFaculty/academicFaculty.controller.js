@@ -18,7 +18,7 @@ const sendResponse_1 = __importDefault(require("../../utils/sendResponse"));
 const http_status_1 = __importDefault(require("http-status"));
 const academicFaculty_service_1 = require("./academicFaculty.service");
 // create academic faculty
-const createAcademicFaculty = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createAcademicFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield academicFaculty_service_1.academicFacultyServices.createAcademicFacultyIntoDB(req.body);
     // sending response 
     (0, sendResponse_1.default)(res, {
