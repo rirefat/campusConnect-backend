@@ -18,8 +18,8 @@ const updateAcademicDepartmentValidationSchema = zod_1.z.object({
         name: zod_1.z.string({
             required_error: "Academic Department name is required",
             invalid_type_error: "Department name must be a string"
-        }),
-        academicFaculty: zod_1.z.string({ required_error: "Corresponding Academic Faculty is required." })
+        }).optional(),
+        academicFaculty: zod_1.z.string({ required_error: "Corresponding Academic Faculty is required." }).optional()
     })
 });
 exports.academicDepartmentValidation = {
