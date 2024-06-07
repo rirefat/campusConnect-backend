@@ -52,14 +52,33 @@ const getSingleAcademicFaculty = (0, catchAsync_1.default)((req, res) => __await
     });
 }));
 // update a single academic faculty
+// const updateSingleAcademicFaculty: RequestHandler = catchAsync(async (req, res) => {
+//     const result = academicFacultyServices.updateAcademicFacultyFromDB(req.params.facultyId, req.body);
+//     // 
+//     sendResponse(res, {
+//         statusCode: httpStatus.OK,
+//         success: true,
+//         message: 'Updated a specific academic faculty successfully',
+//         data: result
+//     })
+// })
 const updateSingleAcademicFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = academicFaculty_service_1.academicFacultyServices.updateAcademicFacultyFromDB(req.params.facultyId, req.body);
-    // 
+    const { facultyId } = req.params;
+    const updateData = req.body;
+    const updatedFaculty = yield academicFaculty_service_1.academicFacultyServices.updateAcademicFacultyFromDB(facultyId, updateData);
+    if (!updatedFaculty) {
+        return (0, sendResponse_1.default)(res, {
+            statusCode: http_status_1.default.NOT_FOUND,
+            success: false,
+            message: 'Academic faculty not found or update failed',
+            data: null
+        });
+    }
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
         message: 'Updated a specific academic faculty successfully',
-        data: result
+        data: updatedFaculty
     });
 }));
 exports.academicFacultyController = {
