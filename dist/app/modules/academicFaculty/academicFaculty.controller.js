@@ -36,10 +36,35 @@ const getAllAcademicFaculties = (0, catchAsync_1.default)((req, res) => __awaite
         statusCode: http_status_1.default.OK,
         success: true,
         message: 'Retrieved all academic faculties successfully',
+        totalData: result.length,
+        data: result
+    });
+}));
+// retrieve single academic faculty
+const getSingleAcademicFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield academicFaculty_service_1.academicFacultyServices.getSingleAcademicFacultyFromDB(req.params.facultyId);
+    // sending response 
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Retrieved a specific academic faculty successfully',
+        data: result
+    });
+}));
+// update a single academic faculty
+const updateSingleAcademicFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = academicFaculty_service_1.academicFacultyServices.updateAcademicFacultyFromDB(req.params.facultyId, req.body);
+    // 
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: 'Updated a specific academic faculty successfully',
         data: result
     });
 }));
 exports.academicFacultyController = {
     createAcademicFaculty,
     getAllAcademicFaculties,
+    getSingleAcademicFaculty,
+    updateSingleAcademicFaculty
 };
