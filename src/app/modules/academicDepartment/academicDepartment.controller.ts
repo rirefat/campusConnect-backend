@@ -34,9 +34,17 @@ const getAllAcademicDepartments: RequestHandler = catchAsync(async (req, res) =>
 // retrieved single academic department using department id
 const getSingleAcademicDepartment: RequestHandler = catchAsync(async (req, res) => {
     const { departmentId } = req.params;
-    const result = academicDepartmentServices.getSingleAcademicDepartmentFromDB(departmentId);
+    const result =await academicDepartmentServices.getSingleAcademicDepartmentFromDB(departmentId);
 
     // sending response 
+    if (!result) {
+        return sendResponse(res, {
+            statusCode: httpStatus.NOT_FOUND,
+            success: false,
+            message: 'Academic department not found',
+            data: null
+        });
+    }
     sendResponse(res, {
         statusCode: httpStatus.OK,
         success: true,
@@ -49,7 +57,7 @@ const getSingleAcademicDepartment: RequestHandler = catchAsync(async (req, res) 
 // update single academic department 
 const updateSingleAcademicDepartment: RequestHandler = catchAsync(async (req, res) => {
     const { departmentId } = req.params;
-    const result = academicDepartmentServices.updateSingleAcademicDepartmentFromDB(departmentId, req.body);
+    const result =await academicDepartmentServices.updateSingleAcademicDepartmentFromDB(departmentId, req.body);
 
     // sending response 
     sendResponse(res, {

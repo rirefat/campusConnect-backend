@@ -43,8 +43,16 @@ const getAllAcademicDepartments = (0, catchAsync_1.default)((req, res) => __awai
 // retrieved single academic department using department id
 const getSingleAcademicDepartment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { departmentId } = req.params;
-    const result = academicDepartment_service_1.academicDepartmentServices.getSingleAcademicDepartmentFromDB(departmentId);
+    const result = yield academicDepartment_service_1.academicDepartmentServices.getSingleAcademicDepartmentFromDB(departmentId);
     // sending response 
+    if (!result) {
+        return (0, sendResponse_1.default)(res, {
+            statusCode: http_status_1.default.NOT_FOUND,
+            success: false,
+            message: 'Academic department not found',
+            data: null
+        });
+    }
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
@@ -56,7 +64,7 @@ const getSingleAcademicDepartment = (0, catchAsync_1.default)((req, res) => __aw
 // update single academic department 
 const updateSingleAcademicDepartment = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { departmentId } = req.params;
-    const result = academicDepartment_service_1.academicDepartmentServices.updateSingleAcademicDepartmentFromDB(departmentId, req.body);
+    const result = yield academicDepartment_service_1.academicDepartmentServices.updateSingleAcademicDepartmentFromDB(departmentId, req.body);
     // sending response 
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
