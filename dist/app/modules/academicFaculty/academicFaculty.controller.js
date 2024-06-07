@@ -52,16 +52,6 @@ const getSingleAcademicFaculty = (0, catchAsync_1.default)((req, res) => __await
     });
 }));
 // update a single academic faculty
-// const updateSingleAcademicFaculty: RequestHandler = catchAsync(async (req, res) => {
-//     const result = academicFacultyServices.updateAcademicFacultyFromDB(req.params.facultyId, req.body);
-//     // 
-//     sendResponse(res, {
-//         statusCode: httpStatus.OK,
-//         success: true,
-//         message: 'Updated a specific academic faculty successfully',
-//         data: result
-//     })
-// })
 const updateSingleAcademicFaculty = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { facultyId } = req.params;
     const updateData = req.body;
