@@ -136,6 +136,10 @@ const studentSchema = new mongoose_1.Schema({
         type: mongoose_1.Schema.Types.ObjectId,
         ref: 'AcademicDepartment',
         required: true
+    },
+    isDeleted: {
+        type: Boolean,
+        default: false
     }
 });
 exports.StudentModel = (0, mongoose_1.model)("Student", studentSchema);
